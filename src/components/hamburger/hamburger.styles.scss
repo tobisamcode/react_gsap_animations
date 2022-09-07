@@ -1,3 +1,33 @@
+@import "../../App.scss";
+
 .hamburger-menu {
-  display: none;
+  //   display: none;
+  z-index: 9;
+  inset: 0 0 0 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+
+  .menu-secondary-background-color {
+    background-color: $black;
+    inset: 0 0 0 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .menu-layer {
+    position: relative;
+    background: $red;
+    overflow: hidden;
+
+    .menu-city-background {
+      inset: 0 0 0 0;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+    }
+  }
 }
