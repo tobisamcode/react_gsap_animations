@@ -23,6 +23,25 @@ const Hamburger = () => {
                   </li>
                 </ul>
               </nav>
+
+              <div className="info">
+                <h3>Our Promise</h3>
+                <p>
+                  The passage experienced a surge in popularity during the 1960s
+                  when Letraset used it on their dry-transfer sheets, and again
+                  during the 90s as desktop publishers bundled the text with
+                  their software.
+                </p>
+              </div>
+
+              <div className="locations">
+                Locations:
+                <span>Dallas</span>
+                <span>Austin</span>
+                <span>New York</span>
+                <span>San Francisco</span>
+                <span>Beijing</span>
+              </div>
             </div>
           </div>
         </div>
