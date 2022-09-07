@@ -11,13 +11,25 @@ import Solution from "./pages/solution/solution.component";
 const App = () => {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/opportunities" element={<Opportunities />} />
-        <Route exact path="/solutions" element={<Solution />} />
-        <Route exact path="/contact-us" element={<Contact />} />
-      </Routes>
+      <div className="App">
+        <Header />
+        <div className="container">
+          <div className="wrapper">
+            <div className="home">
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route
+                  exact
+                  path="/opportunities"
+                  element={<Opportunities />}
+                />
+                <Route exact path="/solutions" element={<Solution />} />
+                <Route exact path="/contact-us" element={<Contact />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      </div>
     </BrowserRouter>
   );
 };
