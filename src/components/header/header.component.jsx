@@ -10,6 +10,16 @@ const Header = () => {
     menuName: "Menu"
   });
 
+  const handeMenu = () => {
+    if (state.initial === false) {
+      setState({
+        initial: null,
+        clicked: true,
+        menuName: "Close"
+      });
+    }
+  };
+
   return (
     <header>
       <div className="container">
