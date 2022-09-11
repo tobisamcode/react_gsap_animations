@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import "./hamburger.styles.scss";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
 
 const Hamburger = ({ state }) => {
-  const { clicked, initial, menuName } = state;
+  const { clicked, initial } = state;
 
+  // DOM Nodes to be animated
   let menu = useRef(null);
   let revealMenu = useRef(null);
   let revealMenuBackground = useRef(null);
@@ -17,7 +19,18 @@ const Hamburger = ({ state }) => {
   useEffect(() => {
     if (clicked === false) {
       // close menu
-      menu.style.display = "none";
+      gsap.to([revealMenu, revealMenuBackground], {
+        duration: 0.8,
+        height: 0,
+        ease: "power3.inOut",
+        stagger: {
+          amount: 0.07
+        }
+      });
+      gsap.to(menu, {
+        duration: 1,
+        css: { display: "none" }
+      });
     } else if (clicked === true || (clicked === true && initial === null)) {
       // open menu
       menu.style.display = "block";
@@ -27,10 +40,10 @@ const Hamburger = ({ state }) => {
   return (
     <div ref={(e) => (menu = e)} className="hamburger-menu">
       <div
-        ref={(e) => (menu = e)}
+        ref={(e) => (revealMenuBackground = e)}
         className="menu-secondary-background-color"
       ></div>
-      <div ref={(e) => (menu = e)} className="menu-layer">
+      <div ref={(e) => (revealMenu = e)} className="menu-layer">
         <div className="menu-city-background"></div>
         <div className="container">
           <div className="wrapper">
@@ -38,18 +51,24 @@ const Hamburger = ({ state }) => {
               <nav>
                 <ul>
                   <li>
-                    <Link to="/opportunities">Opportunities</Link>
+                    <Link ref={(e) => (line1 = e)} to="/opportunities">
+                      Opportunities
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/solutions">Solutions</Link>
+                    <Link ref={(e) => (line2 = e)} to="/solutions">
+                      Solutions
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/contact-us">Contact</Link>
+                    <Link ref={(e) => (line1 = e)} to="/contact-us">
+                      Contact
+                    </Link>
                   </li>
                 </ul>
               </nav>
 
-              <div className="info">
+              <div ref={(e) => (info = e)} className="info">
                 <h3>Our Promise</h3>
                 <p>
                   The passage experienced a surge in popularity during the 1960s
