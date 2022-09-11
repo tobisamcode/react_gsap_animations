@@ -10,7 +10,10 @@ const Header = () => {
     menuName: "Menu"
   });
 
+  const [disabled, setDisabled] = useState(false);
+
   const handeMenu = () => {
+    disableMenu();
     if (state.initial === false) {
       setState({
         initial: null,
@@ -30,6 +33,14 @@ const Header = () => {
     }
   };
 
+  // Determine if menu button should be disabled
+  const disableMenu = () => {
+    setDisabled(!disabled);
+    setTimeout(() => {
+      setDisabled(false);
+    }, 1200);
+  };
+
   return (
     <header>
       <div className="container">
@@ -39,7 +50,9 @@ const Header = () => {
               <Link to="/">HAMBRG.</Link>
             </div>
             <div className="menu">
-              <button>Menu</button>
+              <button disabled={disabled} onClick={handeMenu}>
+                Menu
+              </button>
             </div>
           </div>
         </div>
