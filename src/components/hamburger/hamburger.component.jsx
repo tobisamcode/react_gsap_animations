@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./hamburger.styles.scss";
 import { Link } from "react-router-dom";
 
-const Hamburger = () => {
+const Hamburger = ({ state }) => {
+  const { clicked, initial, menuName } = state;
+
+  let menu = useRef(null);
+
+  useEffect(() => {
+    if (clicked === false) {
+      // close menu
+      // menu.style.display = "none";
+    } else if (clicked === true || (clicked === true && initial === null)) {
+      // open menu
+      // menu.style.display = "block";
+    }
+  });
+
   return (
-    <div className="hamburger-menu">
+    <div ref={(e) => (menu = e)} className="hamburger-menu">
       <div className="menu-secondary-background-color"></div>
       <div className="menu-layer">
         <div className="menu-city-background"></div>
