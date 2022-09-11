@@ -6,6 +6,13 @@ const Hamburger = ({ state }) => {
   const { clicked, initial, menuName } = state;
 
   let menu = useRef(null);
+  let revealMenu = useRef(null);
+  let revealMenuBackground = useRef(null);
+  let cityBackground = useRef(null);
+  let line1 = useRef(null);
+  let line2 = useRef(null);
+  let line3 = useRef(null);
+  let info = useRef(null);
 
   useEffect(() => {
     if (clicked === false) {
@@ -19,8 +26,11 @@ const Hamburger = ({ state }) => {
 
   return (
     <div ref={(e) => (menu = e)} className="hamburger-menu">
-      <div className="menu-secondary-background-color"></div>
-      <div className="menu-layer">
+      <div
+        ref={(e) => (menu = e)}
+        className="menu-secondary-background-color"
+      ></div>
+      <div ref={(e) => (menu = e)} className="menu-layer">
         <div className="menu-city-background"></div>
         <div className="container">
           <div className="wrapper">
