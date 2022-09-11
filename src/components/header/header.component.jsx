@@ -17,6 +17,16 @@ const Header = () => {
         clicked: true,
         menuName: "Close"
       });
+    } else if (state.clicked === true) {
+      setState({
+        clicked: !state.clicked,
+        menuName: "Menu"
+      });
+    } else if (state.clicked === false) {
+      setState({
+        clicked: !state.clicked,
+        menuName: "Close"
+      });
     }
   };
 
