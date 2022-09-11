@@ -9,6 +9,7 @@ const Header = () => {
     clicked: null,
     menuName: "Menu"
   });
+  const { menuName } = state;
 
   const [disabled, setDisabled] = useState(false);
 
@@ -51,14 +52,14 @@ const Header = () => {
             </div>
             <div className="menu">
               <button disabled={disabled} onClick={handeMenu}>
-                Menu
+                {menuName}
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <Hamburger />
+      <Hamburger state={state} />
     </header>
   );
 };
