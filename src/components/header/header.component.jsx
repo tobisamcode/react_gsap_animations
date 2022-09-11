@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./header.styles.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Hamburger from "../hamburger/hamburger.component";
 
 const Header = () => {
+  const location = useLocation();
+
+  // State for menu button
   const [state, setState] = useState({
     initial: false,
     clicked: null,
@@ -11,7 +14,13 @@ const Header = () => {
   });
   const { menuName } = state;
 
+  // State for disable button
   const [disabled, setDisabled] = useState(false);
+
+  // Use effect for page changes
+  useEffect(() => {
+    setState({ clicked: false, menuName: "Menu" });
+  }, [location]);
 
   const handeMenu = () => {
     disableMenu();
