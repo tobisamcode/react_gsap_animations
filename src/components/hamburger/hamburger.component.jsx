@@ -10,10 +10,10 @@ const Hamburger = ({ state }) => {
   useEffect(() => {
     if (clicked === false) {
       // close menu
-      // menu.style.display = "none";
+      menu.style.display = "none";
     } else if (clicked === true || (clicked === true && initial === null)) {
       // open menu
-      // menu.style.display = "block";
+      menu.style.display = "block";
     }
   });
 
