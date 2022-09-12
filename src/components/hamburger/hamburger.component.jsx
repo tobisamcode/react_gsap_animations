@@ -19,6 +19,7 @@ const Hamburger = ({ state }) => {
   useEffect(() => {
     if (clicked === false) {
       // close menu
+
       gsap.to([revealMenu, revealMenuBackground], {
         duration: 0.8,
         height: 0,
@@ -33,9 +34,31 @@ const Hamburger = ({ state }) => {
       });
     } else if (clicked === true || (clicked === true && initial === null)) {
       // open menu
-      menu.style.display = "block";
+      gsap.to(menu, {
+        duration: 0,
+        css: { display: "block" }
+      });
+      gsap.to([revealMenu, revealMenuBackground], {
+        duration: 0,
+        opacity: 1,
+        height: "100%"
+      });
+      staggerReveal(revealMenuBackground, revealMenu);
     }
-  });
+  }, [state]);
+
+  const staggerReveal = (node1, node2) => {
+    gsap.from([node1, node2], {
+      duration: 0.8,
+      height: 0,
+      transformOrigin: "right top",
+      skewY: 2,
+      ease: "power3.inOut",
+      stagger: {
+        amount: 0.1
+      }
+    });
+  };
 
   return (
     <div ref={(e) => (menu = e)} className="hamburger-menu">
