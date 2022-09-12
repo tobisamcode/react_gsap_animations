@@ -10,7 +10,7 @@ const Hamburger = ({ state }) => {
   let menu = useRef(null);
   let revealMenu = useRef(null);
   let revealMenuBackground = useRef(null);
-  let cityBackground = useRef(null);
+  // let cityBackground = useRef(null);
   let line1 = useRef(null);
   let line2 = useRef(null);
   let line3 = useRef(null);
@@ -44,6 +44,8 @@ const Hamburger = ({ state }) => {
         height: "100%"
       });
       staggerReveal(revealMenuBackground, revealMenu);
+      fadeInUp(info);
+      staggerText(line1, line2, line3);
     }
   }, [state]);
 
@@ -57,6 +59,28 @@ const Hamburger = ({ state }) => {
       stagger: {
         amount: 0.1
       }
+    });
+  };
+
+  const staggerText = (node1, node2, node3) => {
+    gsap.from([node1, node2, node3], {
+      duration: 0.8,
+      y: 100,
+      delay: 0.1,
+      ease: "power3.inOut",
+      stagger: {
+        amount: 0.4
+      }
+    });
+  };
+
+  const fadeInUp = (node) => {
+    gsap.from(node, {
+      duration: 1,
+      y: 60,
+      delay: 0.6,
+      opacity: 0,
+      ease: "power3.inOut"
     });
   };
 
@@ -84,7 +108,7 @@ const Hamburger = ({ state }) => {
                     </Link>
                   </li>
                   <li>
-                    <Link ref={(e) => (line1 = e)} to="/contact-us">
+                    <Link ref={(e) => (line3 = e)} to="/contact-us">
                       Contact
                     </Link>
                   </li>
